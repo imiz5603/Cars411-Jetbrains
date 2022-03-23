@@ -1,0 +1,151 @@
+﻿@using Cars411.Models;
+@{
+    List<getCarRating_Result2> posts = (List<getCarRating_Result2>)ViewBag.CarList;
+}<div class="breadcrumb-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-12">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">All Cars</li>
+
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+@{
+    ViewBag.Title = "AllCars";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <br>
+    <div class="row">
+
+        <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1">
+            <section class="section ">
+                <div class="container-fluid">
+                    <div class="row blog-grid-row">
+                        @foreach (var item in posts)
+                        {
+
+                            <div class="col-md-6 col-lg-3 col-sm-12 line-content" id="line-content">
+
+
+                                <div class="blog grid-blog">
+                                    <div class="blog-image">
+                                        <a href="@Url.Action("Details","Cars",new { id=item.PostID, avg=item.Aveg})"><img class="img-fluid" src="@item.PostImage" alt="Post Image"></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="@Url.Action("Details","Cars",new { id=item.PostID, avg=item.Aveg})">@item.PostTitle</a></h3>
+                                        @if (item.PostDescription.Length > 100)
+                                        {
+                                            <p class="mb-0">@item.PostDescription.Substring(0, 100)</p>
+                                            <a href="@Url.Action("Details","Cars",new { id=item.PostID, avg=item.Aveg})" class="read-more">Read More</a>
+                                        }
+                                        else
+                                        {
+                                            <p>@item.PostDescription</p>
+                                        }
+                                    <div class="rating">
+                                        @{ int j = 5;}
+                                        @for (int i = 1; i <= item.Aveg; i++)
+                                        {
+
+                                            <i class="fas fa-star filled"></i>
+                                            j--;
+                                        }
+                                        @if (j > 0)
+                                        {
+                                            for (int i = 0; i < j; i++)
+                                            {
+
+                                                <i class="fas fa-star"></i>
+
+                                            }
+                                        }
+
+                                       
+                                    </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                 
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="blog-pagination" id="page">
+                                <nav>
+                                    <ul id="pagin" class="pagination justify-content-center">
+                                    </ul>
+                                  
+                                </nav>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+      
+
+        </div>
+    </div>
+
+</div>
+<script src="~/assets/js/jquery-3.5.1.js"></script>
+<script>
+    function scrollToBottom(id) {
+        $('html,body').animate({
+            scrollTop: $(".blog-pagination").offset().top
+        },
+            'slow');
+    }
+    $(document).ready(function () {
+
+
+        $(function () {
+            $('#page').Pagination({
+                size: 100
+
+            });
+        });
+
+        var pageSize = 40;
+
+        var pageCount = $(".line-content").length / pageSize;
+
+        for (var i = 0; i < pageCount; i++) {
+
+            $("#pagin").append('<li class="page-item"><a class="page-link" href="#" onclick="scrollToBottom(this)"=>' + (i + 1) + '</a></li> ');
+        }
+        $("#pagin li").first().addClass("active")
+        $("#pagin li").first().find("a").addClass("current")
+        showPage = function (page) {
+            $(".line-content").hide();
+            $(".line-content").each(function (n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+            });
+        }
+
+        showPage(1);
+
+        $("#pagin li a").click(function () {
+            $("#pagin li").removeClass("active")
+            $(this).parent().addClass("active")
+            $("#pagin li a").removeClass("current");
+            $(this).addClass("current");
+            showPage(parseInt($(this).text()))
+        });
+    });
+
+</script>
+

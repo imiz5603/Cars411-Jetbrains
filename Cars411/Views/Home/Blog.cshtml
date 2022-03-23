@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Cars411.Models;
+@{
+    List<tblBlog> blogs = (List<tblBlog>)ViewBag.BlogList;
+}
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Blog Posts</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1">
+
+            @foreach (var item in blogs)
+            {
+                string date = Convert.ToDateTime(item.CreateDate).ToString("yyyy/MM/dd");
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="doctor-widget">
+                            <div class="doc-info-left">
+                                <div class="doctor-img">
+                                    <a href="@Url.Action("BlogPerview","Home",new { id=item.BlogID})">
+                                        <img src="@item.BlogImage" class="img-fluid" alt="Blog Image">
+                                    </a>
+                                </div>
+                                <div class="doc-info-cont">
+                                    <h4 class="doc-name"><a href="@Url.Action("BlogPerview","Home",new { id=item.BlogID})">@item.Blogtitle</a></h4>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            @if (item.Description.Length > 300)
+                                            {
+                                                <p>@item.Description.Substring(0, 300)</p>
+                                                <a href="@Url.Action("BlogPerview","Home",new { id=item.BlogID})" class="read-more">Read More</a>
+                                            }
+                                            else
+                                            {
+                                                <p>@item.Description</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-info-right">
+                                <div class="clinic-booking">
+                                    Posted on: <i class="far fa-calendar"></i> @date
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="blog-pagination" id="page">
+                <nav>
+                    <ul id="pagin" class="pagination justify-content-center">
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/js/jquery-3.5.1.js"></script>
+<script>
+    function scrollToBottom(id) {
+        $('html,body').animate({
+            scrollTop: $(".blog-pagination").offset().top
+        },
+            'slow');
+    }
+    $(document).ready(function () {
+
+
+        $(function () {
+            $('#page').Pagination({
+                size: 100
+
+            });
+        });
+
+        var pageSize = 5;
+
+        var pageCount = $(".card").length / pageSize;
+
+        for (var i = 0; i < pageCount; i++) {
+
+            $("#pagin").append('<li class="page-item"><a class="page-link" href="#" onclick="scrollToBottom(this)"=>' + (i + 1) + '</a></li> ');
+        }
+        $("#pagin li").first().addClass("active")
+        $("#pagin li").first().find("a").addClass("current")
+        showPage = function (page) {
+            $(".card").hide();
+            $(".card").each(function (n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+            });
+        }
+
+        showPage(1);
+
+        $("#pagin li a").click(function () {
+            $("#pagin li").removeClass("active")
+            $(this).parent().addClass("active")
+            $("#pagin li a").removeClass("current");
+            $(this).addClass("current");
+            showPage(parseInt($(this).text()))
+        });
+    });
+
+</script>

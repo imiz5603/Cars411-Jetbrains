@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+@using Cars411.Models;
+@{
+    ViewBag.Title = "Index";
+    List<getAccessMenusUser_Result> list = (List<getAccessMenusUser_Result>)Session["Menu"];
+}
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Cars411</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <link href="~/assets/img/carlogo.jpeg" rel="icon">
+        <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/assets/plugins/fontawesome/css/fontawesome.min.css">
+        <link rel="stylesheet" href="~/assets/plugins/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="~/assets/plugins/datatables/datatables.min.css">
+        <link rel="stylesheet" href="~/assets/css/style.css">
+        <style>
+            .dashboard-menu > ul > li > a {
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <header class="header">
+                <nav class="navbar navbar-expand-lg header-nav">
+                    <div class="navbar-header">
+                        <a id="mobile_btn" href="javascript:void(0);">
+                            <span class="bar-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                        <a href="#" class="navbar-brand logo">
+                            <img src="~/assets/img/carlogo.jpeg" class="img-fluid" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="main-menu-wrapper">
+                        <div class="menu-header">
+                            <a href="index.html" class="menu-logo">
+                                <img src="~/assets/img/logo.png" class="img-fluid" alt="Logo">
+                            </a>
+                            <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                        <ul class="main-nav">
+                            <li class="has-submenu">
+                                <a href="@Url.Action("Index","Home")">Home</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Blog","Home")">Blog Posts</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Cars")">Best Rated</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("AllCarList","Cars")">All Car Reviews</a>
+                            </li>
+
+                            @if (Session["UserID"] == null)
+                            {
+                                <li class="login-link">
+                                    <a href="@Url.Action("Login","Account")">Login / Signup</a>
+                                </li>
+                            }
+                            else
+                            {
+
+                            }
+                            <li class="login-link">
+                                <a href="@Url.Action("Userlogin", "User" , new { id = Session["UserID"] })">Go to Dashboard</a>
+                            </li>
+                        </ul>
+                    </div>
+                    @if (Session["UserID"] == null)
+                    {
+                        <ul class="nav header-navbar-rht">
+                            <li class="nav-item">
+                                <a class="nav-link header-login" href="@Url.Action("Login", "Account")">login / Signup </a>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="nav header-navbar-rht">
+                            <li class="nav-item dropdown has-arrow logged-item">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <span class="user-img">
+                                        <img class="rounded-circle" src="@Session["ImagePath"]" width="31" alt="@Session["UserName"]">
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="user-header">
+                                        <div class="avatar avatar-sm">
+                                            <img src="@Session["ImagePath"]" alt="@Session["UserName"]" class="avatar-img rounded-circle">
+                                        </div>
+                                        <div class="user-text">
+                                            <h6>@Session["UserName"]</h6>
+
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item" href="@Url.Action("Userlogin", "User", new { id = Session["UserID"] }))">Dashboard</a>
+                                    <a class="dropdown-item" href="@Url.Action("ProfileSetting", "User")">Profile Settings</a>
+                                    <a class="dropdown-item" href="@Url.Action("Login", "Account")">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+                </nav>
+            </header>
+
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-md-5 col-lg-4 col-xl-3 sidebar" style="background-color:#FE7157">
+
+                            <!-- Profile Sidebar -->
+                            <div class="">
+                                <div class="widget-profile pro-widget-content" style="background-color: #FE7157">
+                                    <div class="profile-info-widget">
+                                        <a href="#" class="booking-doc-img">
+                                            <img src="@Session["ImagePath"]" alt="User Image">
+                                        </a>
+                                        <div class="profile-det-info">
+                                            <h3c style="color:white">@Session["UserName"]</h3c>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dashboard-widget">
+                                    <nav class="dashboard-menu">
+                                        <ul>
+                                            @*<li class="active">
+                                            <a href="#">
+                                                <i class="fas fa-columns"></i>
+                                                <span>Dashboard</span>
+                                            </a>
+                                        </li>*@
+                                            @foreach (var item in list)
+                                            {
+
+                                                <li>
+                                                    <a href="@Url.Action(@item.Action_name, @item.Controller_name)"><i class="@item.Icon_Class"></i> <span>@item.Page_Name</span></a>
+                                                </li>
+
+
+
+                                            }
+                                            @*<li>
+                                            <a href="@Url.Action("Index","MakeModel")">
+                                                <i class="fas fa-calendar-check"></i>
+                                                <span>Makes/Model/Year</span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="@Url.Action("Index","User")">
+                                                <i class="fas fa-file-invoice"></i>
+                                                <span>Users</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Details","Blogs")">
+                                                <i class="fas fa-star"></i>
+                                                <span>Blogs</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Posts")">
+                                                <i class="fas fa-star"></i>
+                                                <span>Posts</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ProfileSetting","User", new { id = Session["UserID"] })">
+                                                <i class="fas fa-user-cog"></i>
+                                                <span>Profile Settings</span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="@Url.Action("ChangePassword","Account")">
+                                                <i class="fas fa-lock"></i>
+                                                <span>Change Password</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Login","Account")">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <span>Logout</span>
+                                            </a>
+                                        </li>*@
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- /Profile Sidebar -->
+
+                        </div>
+                        @RenderBody()
+                    </div>
+
+                </div>
+
+            </div>
+            <br>
+            <!--<footer class="footer" style="position: absolute; bottom: 0px; width:100%">
+
+                <div class="footer-bottom">
+                    <div class="container-fluid">-->
+                        <!-- Copyright -->
+                        <!--<div class="copyright">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="copyright-text">
+                                        <p class="mb-0">&copy; 2021 Cars411. All rights reserved.</p>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>-->
+                        <!-- /Copyright -->
+                    <!--</div>
+                </div>-->
+                <!-- /Footer Bottom -->
+            <!--</footer>-->
+        </div>
+        <script src="~/assets/js/jquery-3.5.1.js"></script>
+        <script src="~/assets/js/bootstrap.min.js"></script>
+        <script src="~/assets/js/popper.min.js"></script>
+        <script src="~/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="~/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+        <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/assets/plugins/datatables/datatables.min.js"></script>
+        <script src="~/assets/js/script.js"></script>
+
+
+
+
+
+        <div class="modal fade" id="delete_makemodel" aria-hidden="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    @using (Html.BeginForm("DeleteData", "MakeModel", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <div class="modal-body" style="text-align:center">
+                                <div class="form-content p-2">
+                                    <input type="text" id="id" name="id" hidden>
+                                    <input type="text" id="type" name="type" hidden>
+                                    <h4 class="modal-title">Delete</h4>
+                                    <p class="mb-4">Are you sure want to delete?</p>
+                                    <button type="submit" class="btn btn-success">Yes </button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="delete_blog" aria-hidden="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    @using (Html.BeginForm("DeleteBlog", "Blogs", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <div class="modal-body" style="text-align:center">
+                                <div class="form-content p-2">
+                                    <input type="text" id="id" name="id" hidden>
+                                    <h4 class="modal-title">Delete</h4>
+                                    <p class="mb-4">Are you sure want to delete?</p>
+                                    <button type="submit" class="btn btn-success">Yes </button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="delete_post" aria-hidden="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    @using (Html.BeginForm("DeletePost", "Posts", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <div class="modal-body" style="text-align:center">
+                                <div class="form-content p-2">
+                                    <input type="text" id="id" name="id" hidden>
+                                    <h4 class="modal-title">Delete</h4>
+                                    <p class="mb-4">Are you sure want to delete?</p>
+                                    <button type="submit" class="btn btn-success">Yes </button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

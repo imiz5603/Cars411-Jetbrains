@@ -1,0 +1,569 @@
+﻿
+declare @Makeid INT
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'AC'
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Cobra',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Abarth' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('500',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('595',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('695',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Alfa Romeo' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('147',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('159',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GT',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GTV',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Giulia',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Giuletta',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('MiTo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Stelvio',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Aston Martin' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('DB11',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('DB9',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('DBs',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Rapide',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Vantage',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Audi' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('500',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('A1',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('A3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('A4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('A5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('A6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('A7',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('A8',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Q2',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Q3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Q5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Q7',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Q8',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('R8',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('RS3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('RS4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('RS5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('RS6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('RS7',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('RSQ3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('RSQ8',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S1',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S7',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S8',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('SQ5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('SQ7',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('SQ8',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('TT',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'B.A.W' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sasuka',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'BAIC' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('D20',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X25',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'BMW' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('3.0',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('1 Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('2 Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('3 Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('4 Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('5 Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('6 Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('7 Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('8 Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('M2',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('M3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('M4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('M5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('M6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('M7',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('M8',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X1',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X2',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X7',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Z3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Z4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('i3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('i4',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Bentley' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('4.5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Amage',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Continental',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('T1',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Buick' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Century',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'C.A.M' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Inyathi',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Cadillac' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('BLS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CTS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('SRX',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Chana' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Star',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Chevrolet' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('3100',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Aveo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Bel Air',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Camaro',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Captiva',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Corvette',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Cruze',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Lumina',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Optra',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Orlando',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sonic',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Spark',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Trailblazer',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Utility',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Chrysler' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('300C',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Crossfire',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Grand Voyager',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Neon',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('PT Cruiser',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sebring',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Voyager',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Citreon' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C1',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C2',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('DS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('DS3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('DS4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Berlingo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Relay',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Daewoo' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Espero',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Lanos',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Daihatsu' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Charade',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Copen',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Cuore',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Gran Max',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sirion',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Terios',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Datsun' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Go',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Go+',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Lux',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Fiat' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('500',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('500L',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('500X',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Bravo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Doblo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Ducato',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Fiorino',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Fullback',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Grande Punto',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Linea',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Palio',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Panda',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Punto',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Qubo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Siena',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Stilo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Strada',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Tipo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Uno',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Ford' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('B-Max',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Bantam',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Cortina',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Courier',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('EcoSport',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Escort',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Everest',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('F-Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('F150',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Fairlane',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Fiesta',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Figo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Focus',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Fusion',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Ikon',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Ka',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Kuga',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Laser',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Mustang',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Ranger',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Territory',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Tourneo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Tourneo Connect',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Transit',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Transit Connect',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Foton' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Induna',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Thunda',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Tunland',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('View',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'GWM' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C10',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C20R',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C50',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CB',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Double-Can',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Florid',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Hover',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('M4',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('P-Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Single-Cab',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Steed',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Steed 5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Steed SE',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Steed 6',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Geely' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Emgrand',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('LC',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('MK',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Haval' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H1',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H2',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H6C',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H9',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Jolion',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Honda' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Accord',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Amaze',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('BR-V',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Ballade',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Brio',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CR-V',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CR-Z',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Civic',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('FR-V',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Fit',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('HR-V',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Jazz',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Mobilio',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Prelude',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S2000',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('WR-V',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Hummer' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H2',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H3',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Hyundai' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Accent',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Atos',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Azera',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Creta',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Elantra',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Getz',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Grand i10',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H-1',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('H100 Bakkie',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Kona',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Matrix',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Mighty',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Santa Fe',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sonata',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Terrecan',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Tiburon',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Tucson',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('i10',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('i20',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('i30',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('ix35',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Isuzu' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('D-Max',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('FRR',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('FSR',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('FTR',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Frontier',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('KB',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Mu-x',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('NPR',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('NPS 300',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('NQR',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Iveco' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Daily',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'JAC' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('N-Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('T6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('T8',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X200',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'JMC' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Boarding',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Carrying',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Landwind',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Vigus',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Jaguar' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('150',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('E-Pace',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('F-Pace',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('F-Type',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('I-Pace',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S-Type',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X-Type',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('XE',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('XF',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('XJ',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('XJS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('XK',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Jeep' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Cherokee',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Commander',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Compass',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Gladiator',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Grand Cherokee',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Patriot',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Renegade',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Kia' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Carens',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Cerato',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('K-Series Pick Up',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Optima',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Pegas',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Picanto',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('ProCeed',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Rio',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sedona',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Seltos',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sonet',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sorento',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Soul',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sportage',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Stinger',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Land Rover' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Defender',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Discovery',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Discovery Sport',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Freelander',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Range Rover',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Range Rover Evoque',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Range Rover Sport',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Range Rover Velar',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Lexus' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CT',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('ES',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('IS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('LC',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('LS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('LX',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('NX',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'MINI' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Clubman',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Convertible',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Countryman',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Coupe',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Hatch',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Paceman',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Roadster',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Mahindra' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Bolero',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Maserati' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Ghibli',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GranTurismo',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Levante',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Quattroporte',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Mazda' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('2',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('323',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('626',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('B-Series',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('BT-50',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CX-3',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CX-30',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CX-7',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Etude',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('MX-5',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('MX-6',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('RX-8',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'McLaren' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('MP4-12C',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Mercedes-Benz' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('A-Class',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('AMG GT',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('B-Class',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('C-Class',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CL',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CLA',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CLC',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CLK',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('CLS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Commercial',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('E-Class',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('G-Class',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GL',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GLA',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GLB',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GLC',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GLE',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('GLS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('ML',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('R-Class',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('S-Class',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('SL',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('SLC',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('SLK',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('SLS',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Sprinter',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('V-Class',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Viano',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('Vito',@Makeid)
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('X-Class',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Mitsubishi' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Nissan' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Opel' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Peugeot' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Pontiac' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Porsche' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Renault' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Smart' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Subaru' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Suzuki' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Tata' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Toyota' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Volkswagen' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'Volvo' 
+
+INSERT INTO [dbo].[tblModel]([Modeltitle],[MakeId])VALUES('',@Makeid)
+
+
+
+

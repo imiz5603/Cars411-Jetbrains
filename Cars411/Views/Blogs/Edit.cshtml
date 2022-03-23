@@ -1,0 +1,98 @@
+﻿@using Cars411.Models;
+@model Cars411.Models.tblBlog
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+
+
+
+<div class="col-md-7 col-lg-8 col-xl-9">
+    <div class="row">
+        <div class="col-md-5 col-5">
+            <div class="breadcrumb-bar">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+
+                        <h2 class="breadcrumb-title">Edit Blog</h2>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-2"></div>
+        <div class="col-md-5 col-5">
+
+            <a href="@Url.Action("Details","Blogs")" class="btn btn-primary float-right mt-2"><i class="fas fa-list mr-1"></i>Blogs List</a>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    @using (Html.BeginForm("Edit", "Blogs", FormMethod.Post, new
+                    {
+                        enctype = "multipart/form-data"
+                    }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <input type="text" name="BlogID" hidden value="@Model.BlogID">
+                            <div class="row form-row">
+                                <div class="col-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Title</label>
+                                        <input type="text" class="form-control" name="Blogtitle" value="@Model.Blogtitle" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Content</label>
+                                        <textarea class="form-control" name="Description" required>@Model.Description</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                    <div class="form-group">
+                                        <div class="change-avatar">
+                                            <div class="profile-img">
+                                                <img src="@Model.BlogImage" alt="User Image" id="blog_img">
+                                                <input type="text" name="BlogImage" value="@Model.BlogImage" hidden>
+                                            </div>
+                                            <div class="upload-img">
+                                                <div class="change-photo-btn">
+                                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                    <input type="file" class="upload" id="Image" name="Image" onchange="show(this)">
+                                                </div>
+                                                <small class="form-text text-muted">Allowed JPG, PNG.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="submit-section">
+                                <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#blog_img').attr('src', e.target.result);
+
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+

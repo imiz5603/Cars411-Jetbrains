@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+
+<div class="col-md-7 col-lg-8 col-xl-9">
+    <div class="row">
+        <div class="col-md-5 col-5">
+            <div class="breadcrumb-bar">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+
+                        <h2 class="breadcrumb-title">Add New Post</h2>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-2"></div>
+        <div class="col-md-5 col-5">
+
+            <a href="@Url.Action("Index","Posts")" class="btn btn-primary float-right mt-2"><i class="fas fa-list mr-1"></i>Posts List</a>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+
+            @using (Html.BeginForm("Create", "Posts", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+            <form>
+
+                @if (ViewBag.message != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @ViewBag.message
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="form-group">
+                            <label>Make</label>
+                            @Html.DropDownList("MakeID", ViewBag.Makes as IEnumerable<SelectListItem>, "Select Make", new { @class = "form-control js-example-basic-single", @required="required" })
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-group">
+                            <label>Model</label>
+                            @Html.DropDownList("ModelID", ViewBag.Model as IEnumerable<SelectListItem>, "Select Model", new { @class = "form-control js-example-basic-single", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-group">
+                            <label>Year</label>
+                            @Html.DropDownList("YearID", ViewBag.Year as IEnumerable<SelectListItem>, "Select Year", new { @class = "form-control js-example-basic-single", @required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" name="PostTitle" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Details</label>
+                            <textarea class="form-control" name="PostDescription" required maxlength="255"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Comfort</label>
+                            <div class="star-rating">
+                                <input id="Cstar-5" type="radio" name="Comfort" value="5">
+                                <label for="Cstar-5" title="5 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Cstar-4" type="radio" name="Comfort" value="4">
+                                <label for="Cstar-4" title="4 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Cstar-3" type="radio" name="Comfort" value="3">
+                                <label for="Cstar-3" title="3 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Cstar-2" type="radio" name="Comfort" value="2">
+                                <label for="Cstar-2" title="2 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Cstar-1" type="radio" name="Comfort" value="1">
+                                <label for="Cstar-1" title="1 star">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Safety</label>
+                            <div class="star-rating">
+                                <input id="Sstar-5" type="radio" name="Safety" value="5">
+                                <label for="Sstar-5" title="5 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Sstar-4" type="radio" name="Safety" value="4">
+                                <label for="Sstar-4" title="4 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Sstar-3" type="radio" name="Safety" value="3">
+                                <label for="Sstar-3" title="3 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Sstar-2" type="radio" name="Safety" value="2">
+                                <label for="Sstar-2" title="2 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Sstar-1" type="radio" name="Safety" value="1">
+                                <label for="Sstar-1" title="1 star">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Reliability</label>
+                            <div class="star-rating">
+                                <input id="Rstar-5" type="radio" name="Relaibility" value="5">
+                                <label for="Rstar-5" title="5 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Rstar-4" type="radio" name="Relaibility" value="4">
+                                <label for="Rstar-4" title="4 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Rstar-3" type="radio" name="Relaibility" value="3">
+                                <label for="Rstar-3" title="3 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Rstar-2" type="radio" name="Relaibility" value="2">
+                                <label for="Rstar-2" title="2 stars">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                                <input id="Rstar-1" type="radio" name="Relaibility" value="1">
+                                <label for="Rstar-1" title="1 star">
+                                    <i class="active fa fa-star"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Approximate Service Cost</label>
+                            <input type="text" class="form-control" name="ServiceCost">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-1">
+                        <div class="form-group">
+                            <label>IsActive</label>
+                            <br>
+                            <input type="checkbox" style="margin-left:0px !important;width:30px !important;height:28px !important" name="IsActive" value="true" checked>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <div class="change-avatar">
+                            <div class="profile-img">
+                                <img src="~/PostImages/placeholder.jpg" alt="Post Image" id="post_img">
+                            </div>
+                            <div class="upload-img">
+                                <div class="change-photo-btn">
+                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                    <input type="file" class="upload" id="Image" name="Image" onchange="show(this)">
+                                </div>
+                                <small class="form-text text-muted">Allowed JPG, PNG</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="submit-section">
+                    <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                </div>
+            </form>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#post_img').attr('src', e.target.result);
+
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

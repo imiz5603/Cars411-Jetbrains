@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "BlogPerview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Cars411.Models;
+@model Cars411.Models.tblBlog
+@{
+    string date = Convert.ToDateTime(Model.CreateDate).ToString("yyyy/MM/dd");
+    // List<tblBlog> blogs = (List<tblBlog>)ViewBag.BlogList;
+    ViewBag.Title = "BlogPerview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-12">
+            <div class="blog-view">
+                <div class="blog blog-single-post">
+                    <div class="blog-image">
+                        <a href="javascript:void(0);"><img alt="" src="@Model.BlogImage" class="img-fluid"></a>
+                    </div>
+                    <h3 class="blog-title">@Model.Blogtitle</h3>
+                    <div class="blog-info clearfix">
+                        <div class="post-left">
+                            <ul>
+
+                                <li><i class="far fa-calendar"></i>@date</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        @Model.Description
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
+            <div class="card post-widget">
+                <div class="card-header">
+                    <h4 class="card-title">Latest Blogs</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="latest-posts">
+                        @foreach (var item in @ViewBag.BlogList)
+                        {
+                            string blogdate = Convert.ToDateTime(item.CreateDate).ToString("yyyy/MM/dd");
+                            <li>
+                                <div class="post-thumb">
+                                    <a href="@Url.Action("BlogPerview","Home",new { id=@item.BlogID})">
+                                        <img class="img-fluid" src="@item.BlogImage" alt="">
+                                    </a>
+                                </div>
+                                <div class="post-info">
+                                    <h4>
+                                        <a href="@Url.Action("BlogPerview","Home",new { id=@item.BlogID})">@item.Blogtitle</a>
+                                    </h4>
+                                    <p>@blogdate</p>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

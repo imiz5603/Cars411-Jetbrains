@@ -1,0 +1,264 @@
+﻿@using Cars411.Models;
+@{
+    List<tblMake> make = (List<tblMake>)ViewBag.Make;
+    List<tblModel> model = (List<tblModel>)ViewBag.Model;
+    List<tblYear> Year = (List<tblYear>)ViewBag.Year;
+}
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+
+<div class="col-md-7 col-lg-8 col-xl-9">
+
+    <div class="row card">
+        <div class="card-body col-sm-12">
+            <ul class="nav nav-tabs nav-tabs-solid">
+                <li class="nav-item"><a class="nav-link" href="#solid-tab1" data-toggle="tab">Make</a></li>
+                <li class="nav-item"><a class="nav-link" href="#solid-tab2" data-toggle="tab">Model</a></li>
+                <li class="nav-item"><a class="nav-link" href="#solid-tab3" data-toggle="tab">Year</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane show" id="solid-tab1">
+                    @using (Html.BeginForm("SaveData", "MakeModel", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="" hidden name="ID" id="ID">
+                                        <input type="text" class="form-control" value="1" hidden name="type">
+                                        <input type="text" class="form-control" value="save" hidden name="action" id="action">
+                                        <input type="text" class="form-control" placeholder="Enter Maker" name="Name" id="Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+
+                                        <button type="submit" class="btn btn-primary submit-btn"  id="savebutton">Add</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0" id="MakeList">
+                            <thead>
+                                <tr>
+                                    <th>Make</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in make)
+                                {
+                                    <tr>
+
+                                        <td>@item.Maketitle</td>
+                                        <td class="text-right">
+                                            <div class="table-action">
+                                                <a href="javascript:void(0)" onclick="EditData(@item.MakeID,'@item.Maketitle',1)" class="btn btn-sm bg-success-light">
+                                                    <i class="fas fa-pen"></i> Edit
+                                                </a>
+                                                <a href="javascript:void(0)" onclick="DeleteData(@item.MakeID,1)" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="solid-tab2">
+                    @using (Html.BeginForm("SaveData", "MakeModel", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="" hidden name="ID" id="ID">
+                                        <input type="text" class="form-control" value="2" hidden name="type">
+                                        <input type="text" class="form-control" value="save" hidden name="action" id="action">
+                                        <input type="text" class="form-control" placeholder="Enter Model" name="Name" id="Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+
+                                        <button type="submit" class="btn btn-primary submit-btn" id="savebutton">Add</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0" id="ModelList">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in model)
+                                {
+                                    <tr>
+
+                                        <td>@item.Modeltitle</td>
+                                        <td class="text-right">
+                                            <div class="table-action">
+                                                <a href="javascript:void(0)" onclick="EditData(@item.ModelID,'@item.Modeltitle',2)" class="btn btn-sm bg-success-light">
+                                                    <i class="fas fa-pen"></i> Edit
+                                                </a>
+                                                <a href="javascript:void(0)" onclick="DeleteData(@item.ModelID,2)" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="solid-tab3">
+                    @using (Html.BeginForm("SaveData", "MakeModel", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="" hidden name="ID" id="ID">
+                                        <input type="text" class="form-control" value="3" hidden name="type" id="type">
+                                        <input type="text" class="form-control" value="save" hidden name="action" id="action">
+                                        <input type="text" class="form-control" placeholder="Enter Year" name="Name" id="Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+
+                                        <button type="submit" class="btn btn-primary submit-btn" id="savebutton">Add</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0" id="YearList">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Year)
+                                {
+                                    <tr>
+
+                                        <td>@item.Yeartitle</td>
+                                        <td class="text-right">
+                                            <div class="table-action">
+                                                <a href="javascript:void(0)" onclick="EditData(@item.YearID,'@item.Yeartitle',3)" class="btn btn-sm bg-success-light">
+                                                    <i class="fas fa-pen"></i> Edit
+                                                </a>
+                                                <a href="javascript:void(0)" onclick="DeleteData(@item.YearID,3)" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/jquery-3.5.1.js"></script>
+<script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/plugins/datatables/datatables.min.js"></script>
+<script>
+
+    function DeleteData(ID, Type) {
+
+        var myModal = $('#delete_makemodel');
+        $("#id", myModal).val(ID);
+        $("#type", myModal).val(Type);   
+        $("#delete_makemodel").modal('show');
+    }
+
+    function EditData(ID,Title, Type) {
+        if (Type == 1)
+        {
+            var myTab = $('#solid-tab1');
+            $("#ID", myTab).val(ID);
+            $("#Name", myTab).val(Title);
+            $("#action", myTab).val("Edit");
+            $("#savebutton", myTab).text("Edit");
+        }
+        if (Type == 2) {
+            var myTab = $('#solid-tab2');
+            $("#ID", myTab).val(ID);
+            $("#Name", myTab).val(Title);
+            $("#action", myTab).val("Edit");
+            $("#savebutton", myTab).text("Edit");
+        }
+        if (Type == 3) {
+            var myTab = $('#solid-tab3');
+            $("#ID", myTab).val(ID);
+            $("#Name", myTab).val(Title);
+            $("#action", myTab).val("Edit");
+            $("#savebutton", myTab).text("Edit");
+        }
+    }
+    $(document).ready(function () {
+
+        var i = '@TempData["TabStatus"]';
+      
+        if (i == 1) {
+            $('.nav-tabs a[href="#solid-tab1"]').tab('show');
+
+        }
+        if (i == 2) {
+            $('.nav-tabs a[href="#solid-tab2"]').tab('show');
+
+        }
+        if (i == 3) {
+            $('.nav-tabs a[href="#solid-tab3"]').tab('show');
+
+        }
+        $('#MakeList').DataTable({
+            searching: false,
+            "ordering": false
+        });
+    });
+    $(document).ready(function () {
+        $('#ModelList').DataTable({
+            searching: false,
+            "ordering": false
+        });
+    });
+    $(document).ready(function () {
+        $('#YearList').DataTable({
+            searching: false,
+            "ordering": false
+        });
+    });
+</script>

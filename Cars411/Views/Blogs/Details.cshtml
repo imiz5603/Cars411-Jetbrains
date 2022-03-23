@@ -1,0 +1,118 @@
+﻿@using Cars411.Models;
+@{
+    List<tblBlog> blogs = (List<tblBlog>)ViewBag.BlogList;
+}
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+
+<div class="col-md-7 col-lg-8 col-xl-9">
+    <div class="row">
+        <div class="col-md-5 col-5">
+            <div class="breadcrumb-bar">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+
+                        <h2 class="breadcrumb-title">Blogs List</h2>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-2"></div>
+        <div class="col-md-5 col-5">
+
+            <a href="@Url.Action("Create","Blogs")" class="btn btn-primary float-right mt-2">Add New Blog</a>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    @if (ViewBag.message != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @ViewBag.message
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    }
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0" id="ScrapperList">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Publish Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in blogs)
+                                {
+
+                                    string date= Convert.ToDateTime(item.CreateDate).ToString("yyyy/MM/dd");
+
+                                   
+                                    <tr>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                                <a href="@Url.Action("BlogPerview","Home",new { id=@item.BlogID})" class="avatar avatar-sm mr-2" target="_blank"><img class="avatar-img rounded-circle" src="@item.BlogImage" alt="Blog Image"></a>
+                                                <a href="@Url.Action("BlogPerview","Home",new { id=@item.BlogID})" target="_blank">@item.Blogtitle</a>
+                                            </h2>
+                                        </td>
+                                        <td>@date</td>
+                                        @*<td>
+                                            @item.Description
+                                        </td>*@
+                                        <td class="text-right">
+                                            <div class="table-action">
+                                                <a href="@Url.Action("BlogPerview","Home",new { id=@item.BlogID})" target="_blank" class="btn btn-sm bg-info-light">
+                                                    <i class="far fa-eye"></i> View
+                                                </a>
+
+                                                <a href="@Url.Action("Edit","Blogs", new { id=@item.BlogID})" class="btn btn-sm bg-success-light">
+                                                    <i class="fas fa-pen"></i> Edit
+                                                </a>
+                                                <a href="javascript:void(0)" onclick="DeleteData(@item.BlogID)" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/assets/js/jquery-3.5.1.js"></script>
+
+<script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/plugins/datatables/datatables.min.js"></script>
+<script>
+    function DeleteData(ID) {
+
+        var myModal = $('#delete_blog');
+        $("#id", myModal).val(ID);
+        $("#delete_blog").modal('show');
+    }
+    $(document).ready(function () {
+        $('#ScrapperList').DataTable({
+            searching: true,
+            "ordering": true
+        });
+    });
+</script>

@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Cars411Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Access_Level">
+          <Key>
+            <PropertyRef Name="Access_ID" />
+          </Key>
+          <Property Name="Access_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Access_Level_Type" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UID" Type="int" />
+        </EntityType>
+        <EntityType Name="Access_Level_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Access_ID" Type="int" />
+          <Property Name="Page_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Page_ID" />
+          </Key>
+          <Property Name="Page_ID" Type="int" Nullable="false" />
+          <Property Name="Page_Name" Type="varchar" MaxLength="500" />
+          <Property Name="Action_name" Type="varchar" MaxLength="50" />
+          <Property Name="Controller_name" Type="varchar" MaxLength="50" />
+          <Property Name="Icon_Class" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblActivationCode">
+          <Key>
+            <PropertyRef Name="ActivationId" />
+          </Key>
+          <Property Name="ActivationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBlogs">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Blogtitle" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="BlogImage" Type="varchar" MaxLength="500" />
+          <Property Name="BlogType" Type="varchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblComment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="IsParent" Type="int" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="CommentDate" Type="date" />
+          <Property Name="Relaiability" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Safety" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Comfort" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="PostID" Type="int" />
+          <Property Name="UserName" Type="varchar" MaxLength="500" />
+          <Property Name="UserImage" Type="varchar" MaxLength="500" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMake">
+          <Key>
+            <PropertyRef Name="MakeID" />
+          </Key>
+          <Property Name="MakeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Maketitle" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblModel">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modeltitle" Type="varchar" MaxLength="500" />
+          <Property Name="MakeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPost">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostTitle" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PostDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MakeID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="YearID" Type="int" Nullable="false" />
+          <Property Name="PostImage" Type="nvarchar" MaxLength="500" />
+          <Property Name="PostedBy" Type="int" Nullable="false" />
+          <Property Name="PostedDate" Type="date" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ServiceCost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Relaibility" Type="int" />
+          <Property Name="Comfort" Type="int" />
+          <Property Name="Safety" Type="int" />
+          <Property Name="PublishBy" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="SMTP" Type="nvarchar(max)" />
+          <Property Name="Port" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Email_Adress" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="500" />
+          <Property Name="LicenseExpiry" Type="date" />
+          <Property Name="ServiceExpiry" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Create_Date" Type="datetime" Nullable="false" />
+          <Property Name="Access_Level_ID" Type="int" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" />
+          <Property Name="UserType" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblYear">
+          <Key>
+            <PropertyRef Name="YearID" />
+          </Key>
+          <Property Name="YearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yeartitle" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Function Name="getAccessMenusUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getBestCarRating" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Safety" Type="int" Mode="In" />
+          <Parameter Name="Comfort" Type="int" Mode="In" />
+          <Parameter Name="Reliability" Type="int" Mode="In" />
+          <Parameter Name="yearID" Type="int" Mode="In" />
+          <Parameter Name="cwhere" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="getCarRating" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PostID" Type="int" Mode="In" />
+          <Parameter Name="ModeID" Type="int" Mode="In" />
+          <Parameter Name="MakeID" Type="int" Mode="In" />
+          <Parameter Name="yearID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Cars411ModelStoreContainer">
+          <EntitySet Name="Access_Level" EntityType="Self.Access_Level" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Access_Level_Menu" EntityType="Self.Access_Level_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblActivationCode" EntityType="Self.tblActivationCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBlogs" EntityType="Self.tblBlogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblComment" EntityType="Self.tblComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMake" EntityType="Self.tblMake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblModel" EntityType="Self.tblModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPost" EntityType="Self.tblPost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSettings" EntityType="Self.tblSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblYear" EntityType="Self.tblYear" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Cars411Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Access_Level">
+          <Key>
+            <PropertyRef Name="Access_ID" />
+          </Key>
+          <Property Name="Access_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Access_Level_Type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Access_Level_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Access_ID" Type="Int32" />
+          <Property Name="Page_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Page_ID" />
+          </Key>
+          <Property Name="Page_ID" Type="Int32" Nullable="false" />
+          <Property Name="Page_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Action_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Controller_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Icon_Class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBlog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Blogtitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BlogImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BlogType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblMake">
+          <Key>
+            <PropertyRef Name="MakeID" />
+          </Key>
+          <Property Name="MakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Maketitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email_Adress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseExpiry" Type="DateTime" Precision="0" />
+          <Property Name="ServiceExpiry" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Create_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Access_Level_ID" Type="Int32" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblYear">
+          <Key>
+            <PropertyRef Name="YearID" />
+          </Key>
+          <Property Name="YearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yeartitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Cars411Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Access_Level" EntityType="Self.Access_Level" />
+          <EntitySet Name="Access_Level_Menu" EntityType="Self.Access_Level_Menu" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="tblBlogs" EntityType="Self.tblBlog" />
+          <EntitySet Name="tblMakes" EntityType="Self.tblMake" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblYears" EntityType="Self.tblYear" />
+          <FunctionImport Name="getAccessMenusUser" ReturnType="Collection(Cars411Model.getAccessMenusUser_Result)">
+          <Parameter Name="User_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tblActivationCodes" EntityType="Cars411Model.tblActivationCode" />
+          <EntitySet Name="tblSettings" EntityType="Cars411Model.tblSetting" />
+          <EntitySet Name="tblPosts" EntityType="Cars411Model.tblPost" />
+          <EntitySet Name="tblComments" EntityType="Cars411Model.tblComment" />
+          <FunctionImport Name="getCarRating" ReturnType="Collection(Cars411Model.getCarRating_Result2)">
+            <Parameter Name="PostID" Mode="In" Type="Int32" />
+            <Parameter Name="ModeID" Mode="In" Type="Int32" />
+            <Parameter Name="MakeID" Mode="In" Type="Int32" />
+            <Parameter Name="yearID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getBestCarRating" ReturnType="Collection(Cars411Model.getBestCarRating_Result2)">
+            <Parameter Name="Safety" Mode="In" Type="Int32" />
+            <Parameter Name="Comfort" Mode="In" Type="Int32" />
+            <Parameter Name="Reliability" Mode="In" Type="Int32" />
+            <Parameter Name="yearID" Mode="In" Type="Int32" />
+            <Parameter Name="cwhere" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tblModels" EntityType="Cars411Model.tblModel" />
+        </EntityContainer>
+        <ComplexType Name="getAccessMenusUser_Result">
+          <Property Type="Int32" Name="Page_ID" Nullable="false" />
+          <Property Type="String" Name="Page_Name" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Action_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Controller_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Icon_Class" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="tblActivationCode">
+          <Key>
+            <PropertyRef Name="ActivationId" />
+          </Key>
+          <Property Name="ActivationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SMTP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Port" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblPost">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostTitle" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PostDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MakeID" Type="Int32" Nullable="false" />
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="YearID" Type="Int32" Nullable="false" />
+          <Property Name="PostImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PostedBy" Type="Int32" Nullable="false" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ServiceCost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Relaibility" Type="Int32" />
+          <Property Name="Comfort" Type="Int32" />
+          <Property Name="Safety" Type="Int32" />
+          <Property Name="PublishBy" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblComment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="IsParent" Type="Int32" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="CommentDate" Type="DateTime" Precision="0" />
+          <Property Name="Relaiability" Type="Int32" />
+          <Property Name="Safety" Type="Int32" />
+          <Property Name="Comfort" Type="Int32" />
+          <Property Name="PostID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="getCarRating_Result">
+          <Property Type="Int32" Name="PostID" Nullable="false" />
+          <Property Type="String" Name="PostDescription" Nullable="false" />
+          <Property Type="String" Name="PostImage" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="PostedDate" Nullable="false" />
+          <Property Type="Int32" Name="Relaiability" Nullable="true" />
+          <Property Type="Int32" Name="Safety" Nullable="true" />
+          <Property Type="Int32" Name="Comfort" Nullable="true" />
+          <Property Type="Int32" Name="Aveg" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getCarRating_Result1">
+          <Property Type="Int32" Name="PostID" Nullable="false" />
+          <Property Type="String" Name="PostDescription" Nullable="false" />
+          <Property Type="String" Name="PostImage" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="PostedDate" Nullable="false" />
+          <Property Type="String" Name="PostTitle" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="Relaiability" Nullable="true" />
+          <Property Type="Int32" Name="Safety" Nullable="true" />
+          <Property Type="Int32" Name="Comfort" Nullable="true" />
+          <Property Type="Int32" Name="Aveg" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getBestCarRating_Result">
+          <Property Type="Int32" Name="PostID" Nullable="true" />
+          <Property Type="String" Name="PostDescription" Nullable="true" />
+          <Property Type="String" Name="PostImage" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="PostedDate" Nullable="true" />
+          <Property Type="String" Name="PostTitle" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Relaiability" Nullable="false" />
+          <Property Type="Int32" Name="Safety" Nullable="false" />
+          <Property Type="Int32" Name="Comfort" Nullable="false" />
+          <Property Type="Int32" Name="Aveg" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getBestCarRating_Result1">
+          <Property Type="Int32" Name="PostID" Nullable="true" />
+          <Property Type="String" Name="PostDescription" Nullable="true" />
+          <Property Type="String" Name="PostImage" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="PostedDate" Nullable="true" />
+          <Property Type="String" Name="PostTitle" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Relaiability" Nullable="false" />
+          <Property Type="Int32" Name="Safety" Nullable="false" />
+          <Property Type="Int32" Name="Comfort" Nullable="false" />
+          <Property Type="Int32" Name="Aveg" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getCarRating_Result2">
+          <Property Type="Int32" Name="PostID" Nullable="true" />
+          <Property Type="String" Name="PostDescription" Nullable="true" />
+          <Property Type="String" Name="PostImage" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="PostedDate" Nullable="true" />
+          <Property Type="String" Name="PostTitle" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="Relaiability" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Safety" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Comfort" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Aveg" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="getBestCarRating_Result2">
+          <Property Type="Int32" Name="PostID" Nullable="false" />
+          <Property Type="String" Name="PostDescription" Nullable="false" />
+          <Property Type="String" Name="PostImage" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="PostedDate" Nullable="false" />
+          <Property Type="String" Name="PostTitle" Nullable="false" MaxLength="500" />
+          <Property Type="Decimal" Name="Relaiability" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Safety" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Comfort" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Aveg" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <EntityType Name="tblModel">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modeltitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MakeId" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Cars411ModelStoreContainer" CdmEntityContainer="Cars411Entities">
+          <EntitySetMapping Name="Access_Level">
+            <EntityTypeMapping TypeName="Cars411Model.Access_Level">
+              <MappingFragment StoreEntitySet="Access_Level">
+                <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
+                <ScalarProperty Name="Access_Level_Type" ColumnName="Access_Level_Type" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Access_Level_Menu">
+            <EntityTypeMapping TypeName="Cars411Model.Access_Level_Menu">
+              <MappingFragment StoreEntitySet="Access_Level_Menu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="Cars411Model.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+                <ScalarProperty Name="Page_Name" ColumnName="Page_Name" />
+                <ScalarProperty Name="Action_name" ColumnName="Action_name" />
+                <ScalarProperty Name="Controller_name" ColumnName="Controller_name" />
+                <ScalarProperty Name="Icon_Class" ColumnName="Icon_Class" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBlogs">
+            <EntityTypeMapping TypeName="Cars411Model.tblBlog">
+              <MappingFragment StoreEntitySet="tblBlogs">
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="Blogtitle" ColumnName="Blogtitle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BlogImage" ColumnName="BlogImage" />
+                <ScalarProperty Name="BlogType" ColumnName="BlogType" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMakes">
+            <EntityTypeMapping TypeName="Cars411Model.tblMake">
+              <MappingFragment StoreEntitySet="tblMake">
+                <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="Maketitle" ColumnName="Maketitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="Cars411Model.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email_Adress" ColumnName="Email_Adress" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="LicenseExpiry" ColumnName="LicenseExpiry" />
+                <ScalarProperty Name="ServiceExpiry" ColumnName="ServiceExpiry" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Access_Level_ID" ColumnName="Access_Level_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblYears">
+            <EntityTypeMapping TypeName="Cars411Model.tblYear">
+              <MappingFragment StoreEntitySet="tblYear">
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="Yeartitle" ColumnName="Yeartitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getAccessMenusUser" FunctionName="Cars411Model.Store.getAccessMenusUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cars411Model.getAccessMenusUser_Result">
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+                <ScalarProperty Name="Page_Name" ColumnName="Page_Name" />
+                <ScalarProperty Name="Action_name" ColumnName="Action_name" />
+                <ScalarProperty Name="Controller_name" ColumnName="Controller_name" />
+                <ScalarProperty Name="Icon_Class" ColumnName="Icon_Class" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tblActivationCodes">
+            <EntityTypeMapping TypeName="Cars411Model.tblActivationCode">
+              <MappingFragment StoreEntitySet="tblActivationCode">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="ActivationId" ColumnName="ActivationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSettings">
+            <EntityTypeMapping TypeName="Cars411Model.tblSetting">
+              <MappingFragment StoreEntitySet="tblSettings">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="SMTP" ColumnName="SMTP" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPosts">
+            <EntityTypeMapping TypeName="Cars411Model.tblPost">
+              <MappingFragment StoreEntitySet="tblPost">
+                <ScalarProperty Name="PublishBy" ColumnName="PublishBy" />
+                <ScalarProperty Name="Safety" ColumnName="Safety" />
+                <ScalarProperty Name="Comfort" ColumnName="Comfort" />
+                <ScalarProperty Name="Relaibility" ColumnName="Relaibility" />
+                <ScalarProperty Name="ServiceCost" ColumnName="ServiceCost" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+                <ScalarProperty Name="PostImage" ColumnName="PostImage" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="PostDescription" ColumnName="PostDescription" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblComments">
+            <EntityTypeMapping TypeName="Cars411Model.tblComment">
+              <MappingFragment StoreEntitySet="tblComment">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="Comfort" ColumnName="Comfort" />
+                <ScalarProperty Name="Safety" ColumnName="Safety" />
+                <ScalarProperty Name="Relaiability" ColumnName="Relaiability" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getCarRating" FunctionName="Cars411Model.Store.getCarRating">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cars411Model.getCarRating_Result2">
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="PostDescription" ColumnName="PostDescription" />
+                <ScalarProperty Name="PostImage" ColumnName="PostImage" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="Relaiability" ColumnName="Relaiability" />
+                <ScalarProperty Name="Safety" ColumnName="Safety" />
+                <ScalarProperty Name="Comfort" ColumnName="Comfort" />
+                <ScalarProperty Name="Aveg" ColumnName="Aveg" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getBestCarRating" FunctionName="Cars411Model.Store.getBestCarRating">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cars411Model.getBestCarRating_Result2">
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="PostDescription" ColumnName="PostDescription" />
+                <ScalarProperty Name="PostImage" ColumnName="PostImage" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="Relaiability" ColumnName="Relaiability" />
+                <ScalarProperty Name="Safety" ColumnName="Safety" />
+                <ScalarProperty Name="Comfort" ColumnName="Comfort" />
+                <ScalarProperty Name="Aveg" ColumnName="Aveg" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tblModels">
+            <EntityTypeMapping TypeName="Cars411Model.tblModel">
+              <MappingFragment StoreEntitySet="tblModel">
+                <ScalarProperty Name="MakeId" ColumnName="MakeId" />
+                <ScalarProperty Name="Modeltitle" ColumnName="Modeltitle" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

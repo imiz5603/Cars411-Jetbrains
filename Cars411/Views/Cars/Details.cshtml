@@ -1,0 +1,422 @@
+﻿@using Cars411.Models;
+@model Cars411.Models.tblPost
+@{ List<tblComment> comment = (List<tblComment>)ViewBag.Comment; }
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    @*<script>
+        window.onload = function () {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: ""
+            },
+            axisY: {
+                title: ""
+            },
+            data: [{
+                type: "column",
+                dataPoints: @Html.Raw(ViewBag.DataPoints)
+            }]
+        });
+        chart.render();
+
+        }
+            </script>*@
+
+    <style>
+        .parent {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .image1 {
+            position: absolute;
+            top: 0;
+            left: 25px;
+        }
+
+        .image2 {
+            position: relative;
+            top: 12px;
+        }
+    </style>
+</head>
+
+
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Post Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+    <div class="card">
+        <div class="card-body">
+            <div class="doctor-widget">
+                <div class="doc-info-left" style=" margin-right: 3%;">
+                    <div class="doctor-img">
+                        <img src="@Model.PostImage" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="doc-info-cont">
+                        <h4 class="doc-name">@Model.PostTitle</h4>
+                        <div class="rating">
+                            @{ int j = 5;}
+                            @for (int i = 1; i <= ViewBag.Average; i++)
+                            {
+
+                <i class="fas fa-star filled"></i>j--;
+                            }
+                            @if (j > 0)
+                            {
+                                for (int i = 0; i < j; i++)
+                                {
+
+                <i class="fas fa-star"></i>}
+                            }
+
+
+                        </div>
+                        <p class="doc-speciality" style="text-align: justify;">@Model.PostDescription</p>
+                    </div>
+
+                </div>
+                <div class="doc-info-right" style="flex: 0 0 400px !important; max-width:none !important;">
+                    @*<div id="chartContainer" style="height: 200px; width: 100%;"></div>*@
+                    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body pt-0">
+
+
+            <div class="tab-content pt-0">
+
+
+
+                <div role="tabpanel" id="doc_reviews" class="tab-pane active ">
+
+                    <!-- Review Listing -->
+                    <div class="widget review-listing">
+                        <ul class="comments-list">
+                            @foreach (var item in comment)
+                            {
+                                string date = Convert.ToDateTime(item.CommentDate).ToString("yyyy-MM-dd");
+
+
+                <li>
+
+
+
+
+                    @if (item.IsParent == 1)
+                    {
+    <div class="comment">
+
+
+        <img class="avatar avatar-sm rounded-circle" alt="User Image" src="@item.UserImage">
+        @*<div class="parent">
+
+                <img  class="image1" src="~/assets/img/Verified.png" />
+                <img class="avatar avatar-sm rounded-circle image2" alt="User Image" src="@item.UserImage">
+
+            </div>*@
+
+        <div class="comment-body" style="width:100% !important">
+            <div class="meta-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="comment-author">
+                            @item.UserName
+
+                            @if (item.UserType == "Service Master")
+                            {
+        <img src="~/assets/img/Verified.png" />}
+
+                        </span>
+
+
+                        <span class="comment-date">Reviewed @date</span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row review-count">
+                            <div class="col-md-4">
+                                <h5 class="doc-department">Comfort</h5>
+                                <div class="rating">
+
+                                    @{ j = 5;}
+                                    @for (int i = 1; i <= item.Comfort; i++)
+                                    {
+
+                <i class="fas fa-star filled"></i>j--;
+                                    }
+                                    @if (j > 0)
+                                    {
+                                        for (int i = 0; i < j; i++)
+                                        {
+
+                <i class="fas fa-star"></i>}
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5 class="doc-department">Safety</h5>
+                                <div class="rating">
+
+                                    @{ j = 5;}
+                                    @for (int i = 1; i <= item.Safety; i++)
+                                    {
+
+                <i class="fas fa-star filled"></i>j--;
+                                    }
+                                    @if (j > 0)
+                                    {
+                                        for (int i = 0; i < j; i++)
+                                        {
+
+                <i class="fas fa-star"></i>}
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5 class="doc-department">Reliability</h5>
+                                <div class="rating">
+
+                                    @{ j = 5;}
+                                    @for (int i = 1; i <= item.Relaiability; i++)
+                                    {
+
+                <i class="fas fa-star filled"></i>j--;
+                                    }
+                                    @if (j > 0)
+                                    {
+                                        for (int i = 0; i < j; i++)
+                                        {
+
+                <i class="fas fa-star"></i>}
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="">
+                @item.Comment
+            </p>
+
+            <div class="comment-reply">
+                <a class="comment-btn" href="#review_desc" onclick="GetID(@item.CommentID)">
+                    <i class="fas fa-reply"></i> Reply
+                </a>
+
+            </div>
+
+        </div>
+    </div>}
+
+
+                    @foreach (var item1 in comment)
+                    {
+                        if (item1.ParentID == item.CommentID)
+                        {
+                            string date1 = Convert.ToDateTime(item1.CommentDate).ToString("yyyy-MM-dd");
+    <ul class="comments-reply">
+        <li>
+            <div class="comment">
+                <img class="avatar avatar-sm rounded-circle" alt="User Image" src="@item1.UserImage">
+                <div class="comment-body">
+                    <div class="meta-data">
+                        <span class="comment-author">
+                            @item1.UserName
+
+                            @if (item.UserType == "Service Master")
+                            {
+    <img src="~/assets/img/Verified.png" />}
+                        </span>
+                        <span class="comment-date">Reviewed @date1</span>
+                    </div>
+                    <p class="comment-content">
+                        @item1.Comment
+                    </p>
+
+                </div>
+            </div>
+        </li>
+    </ul>}
+                    }
+
+                </li>}
+
+
+
+                        </ul>
+
+
+                    </div>
+
+                    <div class="write-review">
+                        <h4>Write a review</h4>
+
+                        <form action="@Url.Action("Details", "Cars")" method="post">
+                            <input type="text" name="PostID" value="@Model.PostID" hidden>
+                            <input type="text" name="ParentID" id="ParentID" value="0" hidden>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Comfort</label>
+                                        <div class="star-rating">
+                                            <input id="Cstar-5" type="radio" name="Comfort" value="5">
+                                            <label for="Cstar-5" title="5 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Cstar-4" type="radio" name="Comfort" value="4">
+                                            <label for="Cstar-4" title="4 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Cstar-3" type="radio" name="Comfort" value="3">
+                                            <label for="Cstar-3" title="3 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Cstar-2" type="radio" name="Comfort" value="2">
+                                            <label for="Cstar-2" title="2 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Cstar-1" type="radio" name="Comfort" value="1">
+                                            <label for="Cstar-1" title="1 star">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Safety</label>
+                                        <div class="star-rating">
+                                            <input id="Sstar-5" type="radio" name="Safety" value="5">
+                                            <label for="Sstar-5" title="5 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Sstar-4" type="radio" name="Safety" value="4">
+                                            <label for="Sstar-4" title="4 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Sstar-3" type="radio" name="Safety" value="3">
+                                            <label for="Sstar-3" title="3 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Sstar-2" type="radio" name="Safety" value="2">
+                                            <label for="Sstar-2" title="2 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Sstar-1" type="radio" name="Safety" value="1">
+                                            <label for="Sstar-1" title="1 star">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Reliability</label>
+                                        <div class="star-rating">
+                                            <input id="Rstar-5" type="radio" name="Relaiability" value="5">
+                                            <label for="Rstar-5" title="5 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Rstar-4" type="radio" name="Relaiability" value="4">
+                                            <label for="Rstar-4" title="4 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Rstar-3" type="radio" name="Relaiability" value="3">
+                                            <label for="Rstar-3" title="3 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Rstar-2" type="radio" name="Relaiability" value="2">
+                                            <label for="Rstar-2" title="2 stars">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                            <input id="Rstar-1" type="radio" name="Relaiability" value="1">
+                                            <label for="Rstar-1" title="1 star">
+                                                <i class="active fa fa-star"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Your review</label>
+                                <textarea id="review_desc" maxlength="100" class="form-control" name="Comment" required></textarea>
+
+                                <div class="d-flex justify-content-between mt-3"><small class="text-muted"><span id="chars">100</span> characters remaining</small></div>
+                            </div>
+
+                            <div class="submit-section">
+                                <button type="submit" class="btn btn-primary submit-btn">Add Review</button>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>*@
+
+<script src="~/assets/js/canvasjs.min.js"></script>
+<script>
+    function GetID(ID) {
+        $("#ParentID").val(ID);
+
+    }
+
+</script>
+<script>
+    var xValues = ["Comfort", "Safety", "Relaiability"];
+    var barColors = ["#6d78ad", "#51cda0", "#df7970"];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: @Html.Raw(ViewBag.DataPoints1)
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: false,
+                text: " "
+            }
+        }
+    });
+</script>

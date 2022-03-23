@@ -1,0 +1,240 @@
+﻿@using Cars411.Models;
+@{
+    List<getBestCarRating_Result2> posts = (List<getBestCarRating_Result2>)ViewBag.CarList;
+}
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Best Rated Cars</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <br>
+    <div class="row">
+
+        <div class="col-md-10 col-lg-10 col-xl-10 theiaStickySidebar offset-md-1">
+
+            <!-- Search Filter -->
+            <div class="card search-filter">
+                <div class="card-header">
+                    <h4 class="card-title mb-0"> </h4>
+                </div>
+                <div class="card-body">
+                    <form action="@Url.Action("Index","Cars")" class="search-box search-box-3" method="post">
+                        <div class="row">
+                            <div class="col-12 col-md-1">
+                            </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="form-group search-widget">
+
+                                        <input type="number" placeholder="Comfort..." class="form-control" name="Comfort" value="@ViewBag.Comfort">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="form-group">
+
+                                        <input type="number" placeholder="Safety..." class="form-control" name="Safety" value="@ViewBag.Safety">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="form-group">
+
+                                        <input type="number" placeholder="Reliability..." class="form-control" name="Reliability" value="@ViewBag.Reliability">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="form-group">
+
+                                        <input type="number" placeholder="Year..." class="form-control" name="year" value="@ViewBag.year">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+
+                                    <button type="submit" class="btn btn-primary search-btn mt-0"><i class="fas fa-search"></i> <span></span></button>
+                                </div>
+
+                            </div>
+</form>
+                    @*<form class="search-form">
+                        <div class="input-group">
+                            <input type="text" placeholder="Search..." class="form-control">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>*@
+
+                </div>
+            </div>
+            <!-- /Search Filter -->
+
+        </div>
+
+        <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1">
+
+
+            @foreach (var item in @ViewBag.CarList)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <div class="doctor-widget">
+                            <div class="doc-info-left">
+                                <div class="doctor-img">
+                                    <a href="@Url.Action("Details", "Cars",new { id=item.PostID, avg=item.Aveg})">
+                                        <img src="@item.PostImage" class="img-fluid" alt="Post Image">
+                                    </a>
+                                </div>
+                                <div class="doc-info-cont">
+                                    <h4 class="doc-name"><a href="@Url.Action("Details", "Cars",new { id=item.PostID, avg=item.Aveg})">@item.PostTitle</a></h4>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5 class="doc-department">Comfort</h5>
+                                            <div class="rating">
+
+                                                @{ int j = 5;}
+                                                @for (int i = 1; i <= item.Comfort; i++)
+                                                {
+
+                                                    <i class="fas fa-star filled"></i>
+                                                    j--;
+                                                }
+                                                @if (j > 0)
+                                                {
+                                                    for (int i = 0; i < j; i++)
+                                                    {
+
+                                                        <i class="fas fa-star"></i>
+
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5 class="doc-department">Safety</h5>
+                                            <div class="rating">
+
+                                                @{ j = 5;}
+                                                @for (int i = 1; i <= item.Safety; i++)
+                                                {
+
+                                                    <i class="fas fa-star filled"></i>
+                                                    j--;
+                                                }
+                                                @if (j > 0)
+                                                {
+                                                    for (int i = 0; i < j; i++)
+                                                    {
+
+                                                        <i class="fas fa-star"></i>
+
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5 class="doc-department">Reliability</h5>
+                                            <div class="rating">
+
+                                                @{ j = 5;}
+                                                @for (int i = 1; i <= item.Relaiability; i++)
+                                                {
+
+                                                    <i class="fas fa-star filled"></i>
+                                                    j--;
+                                                }
+                                                @if (j > 0)
+                                                {
+                                                    for (int i = 0; i < j; i++)
+                                                    {
+
+                                                        <i class="fas fa-star"></i>
+
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="doc-info-right">
+                                <div class="clinic-booking">
+                                    <a class="view-pro-btn" href="@Url.Action("Details", "Cars",new { id=item.PostID, avg=item.Aveg})">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="blog-pagination" id="page">
+                        <nav>
+                            <ul id="pagin" class="pagination justify-content-center">
+                            </ul>
+
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/assets/js/jquery-3.5.1.js"></script>
+<script>
+    function scrollToBottom(id) {
+        $('html,body').animate({
+            scrollTop: $(".blog-pagination").offset().top
+        },
+            'slow');
+    }
+    $(document).ready(function () {
+
+
+        $(function () {
+            $('#page').Pagination({
+                size: 100
+
+            });
+        });
+
+        var pageSize = 40;
+
+        var pageCount = $(".card").length / pageSize;
+
+        for (var i = 0; i < pageCount; i++) {
+
+            $("#pagin").append('<li class="page-item"><a class="page-link" href="#" onclick="scrollToBottom(this)"=>' + (i + 1) + '</a></li> ');
+        }
+        $("#pagin li").first().addClass("active")
+        $("#pagin li").first().find("a").addClass("current")
+        showPage = function (page) {
+            $(".card").hide();
+            $(".card").each(function (n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+            });
+        }
+
+        showPage(1);
+
+        $("#pagin li a").click(function () {
+            $("#pagin li").removeClass("active")
+            $(this).parent().addClass("active")
+            $("#pagin li a").removeClass("current");
+            $(this).addClass("current");
+            showPage(parseInt($(this).text()))
+        });
+    });
+
+</script>

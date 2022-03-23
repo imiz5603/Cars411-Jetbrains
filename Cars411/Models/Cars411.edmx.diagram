@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4997d5b8cfbf43d4aa454f7a01a58854" Name="Diagram1">
+        <EntityTypeShape EntityType="Cars411Model.Access_Level" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cars411Model.Access_Level_Menu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cars411Model.Menu" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cars411Model.tblBlog" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cars411Model.tblMake" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cars411Model.tblUser" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cars411Model.tblYear" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cars411Model.tblActivationCode" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Cars411Model.tblSetting" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Cars411Model.tblPost" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Cars411Model.tblComment" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Cars411Model.tblModel" Width="1.5" PointX="9.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

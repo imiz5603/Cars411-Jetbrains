@@ -1,0 +1,293 @@
+﻿
+@using Cars411.Models;
+@{
+    List<getCarRating_Result2> posts = (List<getCarRating_Result2>)ViewBag.CarList;
+}@*<div class="breadcrumb-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-12">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<section class="section section-search">
+    <div class="container-fluid">
+        
+            <div class="banner-wrapper">
+                <div class="banner-header text-center">
+                    <h1 style="color:#FE7157">Cars411 - South Africa's only car resource portal</h1>
+                    <p style="color:#FE7157">Anything you need to know before buying, selling or servicing!</p>
+                </div>
+
+
+                <div class="card-body search-widget">
+
+                    <form action="@Url.Action("Index","Home")" class="search-box search-box-3" method="post">
+                        <div class="row">
+                            <div class="col-12 col-md-1">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-group search-widget">
+
+                                    @Html.DropDownList("MakeID", ViewBag.Makes as IEnumerable<SelectListItem>, "Select Make", new { @class = "form-control js-example-basic-single" ,@id= "makeid", onchange = "jsFunction(this.value);" })
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-group">
+
+                                    @Html.DropDownList("ModelID", ViewBag.Model as IEnumerable<SelectListItem>, "Select Model", new { @class = "form-control js-example-basic-single" })
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-group">
+
+                                    @Html.DropDownList("YearID", ViewBag.Year as IEnumerable<SelectListItem>, "Select Year", new { @class = "form-control js-example-basic-single" })
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-1">
+
+                                <button type="submit" class="btn btn-primary search-btn mt-0"><i class="fas fa-search"></i> <span></span></button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+              
+            </div>
+        
+        </div>
+        
+</section>
+<div class="container-fluid">
+    <br>
+    <div class="row">
+
+        <div class="col-md-10 col-lg-10 col-xl-10 offset-md-1">
+            <section class="section ">
+                <div class="container-fluid">
+                    <div class="row blog-grid-row">
+                        @foreach (var item in posts)
+                        {
+                            string date = Convert.ToDateTime(item.PostedDate).ToString("yyyy/MM/dd");
+                            <div class="col-md-6 col-lg-3 col-sm-12 line-content" id="line-content">
+
+
+                                <div class="blog grid-blog">
+                                    <div class="blog-image">
+                                        <a href="@Url.Action("Details","Cars",new { id=item.PostID , avg=item.Aveg})"><img class="img-fluid" src="@item.PostImage" alt="Post Image"></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <ul class="entry-meta meta-item">
+
+                                            <li><i class="far fa-clock"></i>@date</li>
+                                        </ul>
+                                        <h3 class="blog-title"><a href="@Url.Action("Details","Cars",new { id=item.PostID, avg=item.Aveg})">@item.PostTitle</a></h3>
+                                        @if (item.PostDescription.Length > 100)
+                                        {
+                                            <p class="mb-0">@item.PostDescription.Substring(0, 100)</p>
+                                            <a href="@Url.Action("Details","Cars",new { id=item.PostID , avg=item.Aveg})" class="read-more">Read More</a>
+                                        }
+                                        else
+                                        {
+                                            <p>@item.PostDescription</p>
+                                        }
+                                    <div class="rating">
+                                        @{ int j = 5;}
+                                        @for (int i = 1; i <= item.Aveg; i++)
+                                        {
+
+                                            <i class="fas fa-star filled"></i>
+                                            j--;
+                                        }
+                                        @if (j > 0)
+                                        {
+                                            for (int i = 0; i < j; i++)
+                                            {
+
+                                                <i class="fas fa-star"></i>
+
+                                            }
+                                        }
+                                       
+                                       
+                                    </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                    @*<div class="row">
+            <div class="col-md-12">
+                <div class="blog-pagination">
+                    <nav>
+                        @if (ViewBag.PostCount > 4)
+                        {
+                            <ul class="pagination justify-content-center">
+
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item ">
+                                    <a class="page-link" href="@Url.Action("Index","Home",new { currentPage=2})">2 <span class="sr-only">(current)</span></a>
+                                </li>
+
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fas fa-angle-double-right"></i></a>
+                                </li>
+                            </ul>
+                        }
+                        @if (ViewBag.PostCount > 8)
+                        {
+                            <ul class="pagination justify-content-center">
+
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item ">
+                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fas fa-angle-double-right"></i></a>
+                                </li>
+                            </ul>
+                        }
+
+                    </nav>
+                </div>
+            </div>
+        </div>*@
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="blog-pagination" id="page">
+                                <nav>
+                                    <ul id="pagin" class="pagination justify-content-center">
+                                    </ul>
+                                    <div class="view-all text-center">
+                                        <a href="@Url.Action("AllCars","Home")" class="btn btn-primary">View All</a>
+                                    </div>
+                                </nav>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            @*<div class="card">
+                    <div class="card-body">
+                        <div class="doctor-widget">
+                            <div class="doc-info-left">
+                                <div class="doctor-img">
+                                    <a href="#">
+                                        <img src="~/assets/img/Cars/toyota.png" class="img-fluid" alt="User Image">
+                                    </a>
+                                </div>
+                                <div class="doc-info-cont">
+                                    <h4 class="doc-name"><a href="#">Toyota</a></h4>
+
+
+                                    <div class="rating">
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star "></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="d-inline-block average-rating">(12)</span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="doc-info-right">
+                                <div class="clinic-booking">
+                                    <a class="view-pro-btn" href="@Url.Action("Details","Cars")">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+        </div>
+    </div>
+
+</div>
+<script src="~/assets/js/jquery-3.5.1.js"></script>
+<script>
+    function scrollToBottom(id) {
+        $('html,body').animate({
+            scrollTop: $(".blog-pagination").offset().top
+        },
+            'slow');
+    }
+
+    $(document).ready(function () {
+
+
+
+        $(function () {
+            $('#page').Pagination({
+            size: 100
+
+            });
+        });
+
+        var pageSize = 4;
+
+        var pageCount = $(".line-content").length / pageSize;
+
+        for (var i = 0; i < pageCount; i++) {
+
+            $("#pagin").append('<li class="page-item"><a class="page-link" href="#" onclick="scrollToBottom(this)"=>' + (i + 1) + '</a></li> ');
+        }
+        $("#pagin li").first().addClass("active")
+        $("#pagin li").first().find("a").addClass("current")
+        showPage = function (page) {
+            $(".line-content").hide();
+            $(".line-content").each(function (n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+            });
+        }
+
+        showPage(1);
+
+        $("#pagin li a").click(function () {
+            $("#pagin li").removeClass("active")
+            $(this).parent().addClass("active")
+            $("#pagin li a").removeClass("current");
+            $(this).addClass("current");
+            showPage(parseInt($(this).text()))
+        });
+    });
+
+    @*$("makeid").on('change', function (event) {
+        alert('123');
+        var makid = $('MakeID').val();
+        var url = '@Url.Action(MVC.Home.Index())' + '&' + '@MVC.Home.IndexParams.MakeId' + '=' + makid;
+
+        window.location.href = url;
+    });*@
+    function jsFunction(value) {
+        var url = '/Home/IndexWithMake?MakeId=64';
+        alert(url)
+        window.location.href = url;
+    }
+</script>

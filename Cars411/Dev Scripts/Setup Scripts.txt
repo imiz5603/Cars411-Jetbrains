@@ -1,0 +1,78 @@
+﻿
+--ALL YEARS
+declare @iqw INT 
+SET @iqw = 0
+while(@iqw<30)
+BEGIN
+INSERT INTO [dbo].[tblYear]
+           ([Yeartitle])
+     VALUES
+           (1990+@iqw)
+		   SET @iqw = @iqw+1
+END
+
+--ALL MAKES
+
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('AC')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Abarth')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Alfa Romeo')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Aston Martin')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Audi')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('B.A.W')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('BAIC')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('BMW')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Bentley')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Buick')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('C.A.M')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Cadillac')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Chana')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Chevrolet')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Chrysler')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Citreon')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Daewoo')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Daihatsu')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Datsun')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Fiat')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Ford')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Foton')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('GWM')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Geely')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Haval')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Honda')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Hummer')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Hyundai')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Isuzu')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Iveco')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('JAC')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('JMC')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Jaguar')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Jeep')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Kia')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Land Rover')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Lexus')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('MINI')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Mahindra')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Maserati')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Mazda')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('McLaren')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Mercedes-Benz')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Mitsubishi')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Nissan')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Opel')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Peugeot')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Pontiac')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Porsche')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Renault')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Smart')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Subaru')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Suzuki')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Tata')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Toyota')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Volkswagen')
+  INSERT INTO [dbo].[tblMake]([Maketitle])VALUES('Volvo')
+
+
+
+
+
+

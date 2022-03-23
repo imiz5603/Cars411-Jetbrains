@@ -1,0 +1,112 @@
+﻿@using Cars411.Models;
+@{
+    List<Posts> posts = (List<Posts>)ViewBag.PostList;
+}
+@{
+
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+<div class="col-md-7 col-lg-8 col-xl-9">
+    <div class="row">
+        <div class="col-md-5 col-5">
+            <div class="breadcrumb-bar">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+
+                        <h2 class="breadcrumb-title">Posts List</h2>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-2"></div>
+        <div class="col-md-5 col-5">
+
+            <a href="@Url.Action("Create","Posts")" class="btn btn-primary float-right mt-2">Add New Post</a>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="card">
+                <div class="card-body">
+                    @if (ViewBag.message != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @ViewBag.message
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    }
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0" id="ScrapperList">
+                            <thead>
+                                <tr>
+                                    <th> Title</th>
+                                    <th>Service Cost</th>
+                                    <th>Make</th>
+                                    <th>Model</th>
+                                    <th>Year</th>
+                                    <th>publish By</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in posts)
+                                {
+                                    <tr>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                                <a href="#" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="@item.PostImage" alt="psot Image"></a>
+                                                <a href="profile.html">@item.PostTitle</a>
+                                            </h2>
+                                        </td>
+                                        <td>@item.ServiceCost</td>
+                                        <td>@item.Maketitle</td>
+                                        <td>@item.Modeltitle</td>
+                                        <td>@item.Yeartitle</td>
+                                        <td>@item.PublishBy</td>
+                                        <td class="text-right">
+                                            <div class="table-action">
+
+                                                <a href="@Url.Action("Edit","Posts",new { id=item.PostID})" class="btn btn-sm bg-success-light">
+                                                    <i class="fas fa-pen"></i> Edit
+                                                </a>
+                                                <a href="javascript:void(0);" onclick="DeleteData(@item.PostID)" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/jquery-3.5.1.js"></script>
+<script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/assets/plugins/datatables/datatables.min.js"></script>
+<script>
+    function DeleteData(ID) {
+
+        var myModal = $('#delete_post');
+        $("#id", myModal).val(ID);
+        $("#delete_post").modal('show');
+    }
+    $(document).ready(function () {
+        $('#ScrapperList').DataTable({
+            searching: true,
+            "ordering": false
+        });
+    });
+</script>
+  
+ 

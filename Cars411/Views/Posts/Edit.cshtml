@@ -1,0 +1,268 @@
+﻿@using Cars411.Models;
+@model Cars411.Models.tblPost
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+
+<div class="col-md-7 col-lg-8 col-xl-9">
+    <div class="row">
+        <div class="col-md-5 col-5">
+            <div class="breadcrumb-bar">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+
+                        <h2 class="breadcrumb-title">Edit Post</h2>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-2"></div>
+        <div class="col-md-5 col-5">
+
+            <a href="@Url.Action("Index","Posts")" class="btn btn-primary float-right mt-2"><i class="fas fa-list mr-1"></i>Posts List</a>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+
+            @using (Html.BeginForm("Edit", "Posts", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+            <form>
+                <input type="text" name="PostID" value="@Model.PostID" hidden>
+                <input type="text" name="PublishBy" value="@Model.PublishBy" hidden>
+                <input type="text" name="PostedBy" value="@Model.PostedBy" hidden>
+                @if (ViewBag.message != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @ViewBag.message
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="form-group">
+                            <label>Make</label>
+                            @Html.DropDownList("MakeID", ViewBag.Makes as IEnumerable<SelectListItem>, "Select Make", new { @class = "form-control js-example-basic-single", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-group">
+                            <label>Model</label>
+                            @Html.DropDownList("ModelID", ViewBag.Model as IEnumerable<SelectListItem>, "Select Model", new { @class = "form-control js-example-basic-single", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-group">
+                            <label>Year</label>
+                            @Html.DropDownList("YearID", ViewBag.Year as IEnumerable<SelectListItem>, "Select Year", new { @class = "form-control js-example-basic-single", @required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" name="PostTitle" value="@Model.PostTitle" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Details</label>
+                            <textarea class="form-control" name="PostDescription" required maxlength="255">@Model.PostDescription</textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Comfort</label>
+
+                         
+                            <div class="star-rating">
+                                
+                                @for (int i = 5; i >0; i--)
+                                {
+                                    if (i == Model.Comfort)
+                                    {
+                                        <input id="Cstar-@i" type="radio" name="Comfort" value=@i checked>
+                                        <label for="Cstar-@i" title="@i stars">
+                                            <i class="active fa fa-star"></i>
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <input id="Cstar-@i" type="radio" name="Comfort" value=@i>
+                                        <label for="Cstar-@i" title="@i stars">
+                                            <i class="active fa fa-star"></i>
+                                        </label>
+                                    }
+                                    
+                                }
+                                @*@if (j > 0)
+                                {
+                                    for (int i = j; i > 0; i--)
+                                    {
+                                        <input id="Cstar-@i" type="radio" name="Comfort" value=@i>
+                                        <label for="Cstar-@i" title="@i stars">
+                                            <i class="active fa fa-star"></i>
+                                        </label>
+                                       
+                                    }
+                                }*@
+
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Safety</label>
+                           
+                            <div class="star-rating">
+                               
+                                @for (int i = 5; i>0; i--)
+                                {
+                                    if (i == Model.Safety)
+                                    {
+                                        <input id="Sstar-@i" type="radio" name="Safety" value=@i checked>
+                                        <label for="Sstar-@i" title="@i stars">
+                                            <i class="active fa fa-star"></i>
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <input id="Sstar-@i" type="radio" name="Safety" value=@i>
+                                        <label for="Sstar-@i" title="@i stars">
+                                            <i class="active fa fa-star"></i>
+                                        </label>
+                                    }
+                                   
+                                }
+                              
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Reliability</label>
+                            @*<div class="rating">
+
+                                @for (int i = 0; i < Model.Relaibility; i++)
+                                {
+
+                                    <i class="fas fa-star filled"></i>
+                                }
+
+
+                            </div>*@
+                        <div class="star-rating">
+                            
+                            @for (int i = 5; i >0; i--)
+                            {
+                                if (i == Model.Relaibility)
+                                {
+                                    <input id="Rstar-@i" type="radio" name="Relaibility" value=@i checked>
+                                    <label for="Rstar-@i" title="@i stars">
+                                        <i class="active fa fa-star"></i>
+                                    </label>
+                                }
+                                else
+                                {
+                                    <input id="Rstar-@i" type="radio" name="Relaibility" value=@i >
+                                    <label for="Rstar-@i" title="@i stars">
+                                        <i class="active fa fa-star"></i>
+                                    </label>
+                                }
+                                
+                            }
+                           
+                            @*<input id="Rstar-5" type="radio" name="Relaibility" value="5">
+        <label for="Rstar-5" title="5 stars">
+            <i class="active fa fa-star"></i>
+        </label>
+        <input id="Rstar-4" type="radio" name="Relaibility" value="4">
+        <label for="Rstar-4" title="4 stars">
+            <i class="active fa fa-star"></i>
+        </label>
+        <input id="Rstar-3" type="radio" name="Relaibility" value="3">
+        <label for="Rstar-3" title="3 stars">
+            <i class="active fa fa-star"></i>
+        </label>
+        <input id="Rstar-2" type="radio" name="Relaibility" value="2">
+        <label for="Rstar-2" title="2 stars">
+            <i class="active fa fa-star"></i>
+        </label>
+        <input id="Rstar-1" type="radio" name="Relaibility" value="1">
+        <label for="Rstar-1" title="1 star">
+            <i class="active fa fa-star"></i>
+        </label>*@
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Approximate Service Cost</label>
+                            <input type="text" class="form-control" name="ServiceCost" value="@Model.ServiceCost">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-1">
+                        <div class="form-group">
+                            <label>IsActive</label>
+                            <br>
+                            @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" }, style = "margin-left:0px !important;width:30px !important;height:28px !important" })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <div class="change-avatar">
+                            <div class="profile-img">
+                                <img src="@Model.PostImage" alt="User Image" id="post_img">
+                                <input type="text" name="PostImage" value="@Model.PostImage" hidden>
+                            </div>
+                            <div class="upload-img">
+                                <div class="change-photo-btn">
+                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                    <input type="file" class="upload" id="Image" name="Image" onchange="show(this)">
+                                </div>
+                                <small class="form-text text-muted">Allowed JPG, PNG</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                </div>
+            </form>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#post_img').attr('src', e.target.result);
+
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
