@@ -1,4 +1,9 @@
 ﻿
+--ALTER TABLE [dbo].[tblModel]
+--ADD [MakeId] int NOT NULL DEFAULT '1'
+
+select * from dbo.tblMake
+
 declare @Makeid INT
 
 SELECT @Makeid = MakeId FROM dbo.tblMake WHERE Maketitle = 'AC'
