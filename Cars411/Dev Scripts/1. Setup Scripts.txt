@@ -1,4 +1,8 @@
-﻿
+﻿delete from dbo.tblMake
+
+delete from dbo.tblModel
+
+delete from dbo.tblYear
 --ALL YEARS
 declare @iqw INT 
 SET @iqw = 0
